@@ -27,6 +27,17 @@ echo "STDERR=$STDERR_LOG"
 echo "FINAL=$FINAL"
 echo
 
+cat > ".codex-runs/$RUN_ID-run-config.json" <<EOF
+{
+  "run_id": "$RUN_ID",
+  "model": "$CODEX_MODEL",
+  "reasoning": "$CODEX_REASONING",
+  "reasoning_summary": "$CODEX_REASONING_SUMMARY",
+  "verbosity": "$CODEX_VERBOSITY",
+  "prompt_file": "$PROMPT_FILE"
+}
+EOF
+
 codex exec \
   --cd "$ROOT" \
   --model "$CODEX_MODEL" \
@@ -60,6 +71,24 @@ echo
 echo "=== SNAPSHOTS ==="
 if [[ -d .codex-state/transcript-snapshots ]] && find .codex-state/transcript-snapshots -type f | grep -q .; then
   find .codex-state/transcript-snapshots -type f -print | sort
+else
+  echo "<none>"
+fi
+
+echo
+echo "=== HOOK MODELS ==="
+if [[ -s .codex-state/prompt-events.jsonl ]]; then
+  python3 - <<'PY'
+import json
+from pathlib import Path
+
+p = Path(".codex-state/prompt-events.jsonl")
+for line in p.read_text().splitlines()[-10:]:
+    if not line.strip():
+        continue
+    obj = json.loads(line)
+    print(f"{obj.get('time_utc')} {obj.get('event')} model={obj.get('model')}")
+PY
 else
   echo "<none>"
 fi
