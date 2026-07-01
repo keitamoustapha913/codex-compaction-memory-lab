@@ -12,3 +12,6 @@ __pycache__/
 # Codex CLI may create protected runtime scratch here.
 # This is not durable project memory. Durable memory is .codex-state/.
 .codex/memory/
+
+# uv local environment
+.venv/

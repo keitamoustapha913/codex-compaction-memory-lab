@@ -11,7 +11,7 @@ Rules:
 - Reconcile durable memory, stage artifacts, git status, git diff, and tests.
 
 Required validation:
-- Run: python3 -m pytest
+- Run: uv run --python 3.10 pytest
 - Run: git status --short
 - Run: git diff -- src tests .codex-stage .codex-state/LIVE_MEMORY.md
 

@@ -5,6 +5,15 @@ ROOT="${1:-$(pwd)}"
 ROOT="$(cd "$ROOT" && pwd)"
 cd "$ROOT"
 
+if ! command -v uv >/dev/null 2>&1; then
+  echo "ERROR: uv is required but not found on PATH." >&2
+  exit 127
+fi
+
+# Force the lab validation environment to Python 3.10.
+uv python pin 3.10 >/dev/null
+uv sync --dev
+
 if ! command -v codex >/dev/null 2>&1; then
   echo "codex CLI not found. Install/authenticate Codex before running this script." >&2
   exit 127
@@ -53,7 +62,7 @@ run_part "02-fix-and-validate" "prompts/02-fix-and-validate.md"
 run_part "03-final-reconcile" "prompts/03-final-reconcile.md"
 
 # Independent wrapper-side checks after Codex has finished.
-python3 -m pytest
+uv run --python 3.10 pytest
 
 grep -q 'PART_01_AUDIT_COMPLETE' .codex-state/LIVE_MEMORY.md
 grep -q 'PART_02_FIX_VALIDATED' .codex-state/LIVE_MEMORY.md

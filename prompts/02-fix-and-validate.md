@@ -11,7 +11,7 @@ Rules:
 - Do not weaken tests.
 
 Required validation:
-- Run: python3 -m pytest
+- Run: uv run --python 3.10 pytest
 - Run: git diff -- src tests
 
 Required artifacts:
