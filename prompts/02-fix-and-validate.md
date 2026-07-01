@@ -2,7 +2,7 @@ You are running Part 02: fix and validate.
 
 Before doing anything:
 1. Read AGENTS.md.
-2. Read .codex/memory/LIVE_MEMORY.md.
+2. Read .codex-state/LIVE_MEMORY.md.
 3. Read .codex-stage/01-audit.md.
 
 Rules:
@@ -19,7 +19,7 @@ Required artifacts:
   - file changed
   - exact behavior fixed
   - validation command and result
-- Update .codex/memory/LIVE_MEMORY.md with marker:
+- Update .codex-state/LIVE_MEMORY.md with marker:
   PART_02_FIX_VALIDATED
 
 Final response must end with exactly one of:

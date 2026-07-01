@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-find .codex/memory -maxdepth 3 -type f -print | sort
+find .codex-state -maxdepth 3 -type f -print | sort
 
 echo
-if [[ -f .codex/memory/LIVE_MEMORY.md ]]; then
+if [[ -f .codex-state/LIVE_MEMORY.md ]]; then
   echo "===== LIVE_MEMORY.md ====="
-  cat .codex/memory/LIVE_MEMORY.md
+  cat .codex-state/LIVE_MEMORY.md
 fi
 
 echo
-if [[ -f .codex/memory/compaction-events.jsonl ]]; then
+if [[ -f .codex-state/compaction-events.jsonl ]]; then
   echo "===== compaction-events.jsonl ====="
-  cat .codex/memory/compaction-events.jsonl
+  cat .codex-state/compaction-events.jsonl
 fi
 
 echo
-if [[ -f .codex/memory/prompt-events.jsonl ]]; then
+if [[ -f .codex-state/prompt-events.jsonl ]]; then
   echo "===== prompt-events.jsonl ====="
-  cat .codex/memory/prompt-events.jsonl
+  cat .codex-state/prompt-events.jsonl
 fi

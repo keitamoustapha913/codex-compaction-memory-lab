@@ -7,7 +7,7 @@ The repo demonstrates this pattern:
 ```text
 codex exec part 1
   -> hooks log prompt/session/compaction events
-  -> Codex updates .codex/memory/LIVE_MEMORY.md
+  -> Codex updates .codex-state/LIVE_MEMORY.md
   -> wrapper checks turn.completed + FINAL_STATUS: PASS
 codex exec part 2
   -> re-reads durable memory and previous stage artifacts
@@ -25,7 +25,7 @@ codex exec part 3
 .codex/hooks/user_prompt_submit_memory_reminder.py
 .codex/hooks/pre_compact_memory_snapshot.py
 .codex/hooks/post_compact_marker.py
-.codex/memory/LIVE_MEMORY.md              # Durable memory Codex must maintain
+.codex-state/LIVE_MEMORY.md              # Durable memory Codex must maintain
 prompts/01-audit-readonly.md              # Stage 1 prompt
 prompts/02-fix-and-validate.md            # Stage 2 prompt
 prompts/03-final-reconcile.md             # Stage 3 prompt
@@ -66,9 +66,9 @@ LOCAL_HOOK_SIMULATION: PASS
 Inspect the generated files:
 
 ```bash
-find .codex/memory -maxdepth 3 -type f -print
-cat .codex/memory/compaction-events.jsonl
-cat .codex/memory/session-start-output.json
+find .codex-state -maxdepth 3 -type f -print
+cat .codex-state/compaction-events.jsonl
+cat .codex-state/session-start-output.json
 ```
 
 ## 3. Run the real Codex non-interactive sequence

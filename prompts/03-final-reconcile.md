@@ -2,7 +2,7 @@ You are running Part 03: final reconcile.
 
 Before doing anything:
 1. Read AGENTS.md.
-2. Read .codex/memory/LIVE_MEMORY.md.
+2. Read .codex-state/LIVE_MEMORY.md.
 3. Read .codex-stage/01-audit.md.
 4. Read .codex-stage/02-fix-and-validate.md.
 
@@ -13,7 +13,7 @@ Rules:
 Required validation:
 - Run: python3 -m pytest
 - Run: git status --short
-- Run: git diff -- src tests .codex-stage .codex/memory/LIVE_MEMORY.md
+- Run: git diff -- src tests .codex-stage .codex-state/LIVE_MEMORY.md
 
 Required artifacts:
 - Write .codex-stage/03-final-reconcile.md with:
@@ -21,7 +21,7 @@ Required artifacts:
   - whether hooks produced prompt or compaction logs if any exist
   - final list of changed files
   - whether success is proven or not proven
-- Update .codex/memory/LIVE_MEMORY.md with marker:
+- Update .codex-state/LIVE_MEMORY.md with marker:
   PART_03_FINAL_RECONCILED
 
 Final response must end with exactly one of:

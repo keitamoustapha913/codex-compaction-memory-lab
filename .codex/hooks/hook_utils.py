@@ -26,7 +26,7 @@ def repo_root(event: dict[str, Any]) -> Path:
 
 
 def ensure_memory_dir(root: Path) -> Path:
-    memory_dir = root / ".codex" / "memory"
+    memory_dir = root / ".codex-state"
     memory_dir.mkdir(parents=True, exist_ok=True)
     (memory_dir / "transcript-snapshots").mkdir(parents=True, exist_ok=True)
     return memory_dir

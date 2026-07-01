@@ -26,7 +26,7 @@ def main() -> int:
         "hookSpecificOutput": {
             "hookEventName": "UserPromptSubmit",
             "additionalContext": (
-                "Durable-memory reminder: keep .codex/memory/LIVE_MEMORY.md current. "
+                "Durable-memory reminder: keep .codex-state/LIVE_MEMORY.md current. "
                 "After each material discovery, file change, validation result, blocker, or phase transition, "
                 "update LIVE_MEMORY.md so the run can recover after compaction."
             ),

@@ -3,8 +3,8 @@ __pycache__/
 *.egg-info/
 .codex-runs/
 .codex-stage/
-.codex/memory/compaction-events.jsonl
-.codex/memory/prompt-events.jsonl
-.codex/memory/session-start-output.json
-.codex/memory/transcript-snapshots/
-.codex/memory/fake-transcript.jsonl
+.codex-state/compaction-events.jsonl
+.codex-state/prompt-events.jsonl
+.codex-state/session-start-output.json
+.codex-state/transcript-snapshots/
+.codex-state/fake-transcript.jsonl

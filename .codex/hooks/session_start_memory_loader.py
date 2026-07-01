@@ -30,11 +30,11 @@ Durable Codex memory hook loaded.
 SessionStart source: {source}
 
 Authoritative continuity file:
-.codex/memory/LIVE_MEMORY.md
+.codex-state/LIVE_MEMORY.md
 
 Rules:
-1. Read .codex/memory/LIVE_MEMORY.md before acting.
-2. Update .codex/memory/LIVE_MEMORY.md after material discoveries, patches, validations, blockers, and phase transitions.
+1. Read .codex-state/LIVE_MEMORY.md before acting.
+2. Update .codex-state/LIVE_MEMORY.md after material discoveries, patches, validations, blockers, and phase transitions.
 3. If this start source is `compact`, treat LIVE_MEMORY.md plus repository evidence as the recovery source after compaction.
 4. Before final output, reconcile LIVE_MEMORY.md with git status, git diff, and validation logs.
 5. Report FINAL_STATUS: PASS only when fully proven.

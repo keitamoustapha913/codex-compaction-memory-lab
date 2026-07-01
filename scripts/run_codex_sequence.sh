@@ -23,7 +23,7 @@ CODEX_COMMON=(
   --cd "$ROOT"
   --json
   --sandbox workspace-write
-  --ask-for-approval never
+  -c approval_policy=never
 )
 
 if [[ "${CODEX_BYPASS_HOOK_TRUST:-0}" == "1" ]]; then
@@ -55,9 +55,9 @@ run_part "03-final-reconcile" "prompts/03-final-reconcile.md"
 # Independent wrapper-side checks after Codex has finished.
 python3 -m pytest
 
-grep -q 'PART_01_AUDIT_COMPLETE' .codex/memory/LIVE_MEMORY.md
-grep -q 'PART_02_FIX_VALIDATED' .codex/memory/LIVE_MEMORY.md
-grep -q 'PART_03_FINAL_RECONCILED' .codex/memory/LIVE_MEMORY.md
+grep -q 'PART_01_AUDIT_COMPLETE' .codex-state/LIVE_MEMORY.md
+grep -q 'PART_02_FIX_VALIDATED' .codex-state/LIVE_MEMORY.md
+grep -q 'PART_03_FINAL_RECONCILED' .codex-state/LIVE_MEMORY.md
 
 echo "ALL_CODEX_SEQUENCE_PARTS: PASS"
 echo "Run artifacts: $OUT_DIR"
