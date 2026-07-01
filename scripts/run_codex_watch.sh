@@ -12,7 +12,16 @@ EVENTS=".codex-runs/$RUN_ID-events.jsonl"
 STDERR_LOG=".codex-runs/$RUN_ID-stderr.log"
 FINAL=".codex-runs/$RUN_ID-final.md"
 
+CODEX_MODEL="${CODEX_MODEL:-gpt-5.4-mini}"
+CODEX_REASONING="${CODEX_REASONING:-medium}"
+CODEX_REASONING_SUMMARY="${CODEX_REASONING_SUMMARY:-auto}"
+CODEX_VERBOSITY="${CODEX_VERBOSITY:-medium}"
+
 echo "RUN_ID=$RUN_ID"
+echo "MODEL=$CODEX_MODEL"
+echo "REASONING=$CODEX_REASONING"
+echo "REASONING_SUMMARY=$CODEX_REASONING_SUMMARY"
+echo "VERBOSITY=$CODEX_VERBOSITY"
 echo "EVENTS=$EVENTS"
 echo "STDERR=$STDERR_LOG"
 echo "FINAL=$FINAL"
@@ -20,10 +29,14 @@ echo
 
 codex exec \
   --cd "$ROOT" \
+  --model "$CODEX_MODEL" \
   --json \
   --sandbox workspace-write \
   -c approval_policy=never \
   -c features.hooks=true \
+  -c model_reasoning_effort="$CODEX_REASONING" \
+  -c model_reasoning_summary="$CODEX_REASONING_SUMMARY" \
+  -c model_verbosity="$CODEX_VERBOSITY" \
   --dangerously-bypass-hook-trust \
   --output-last-message "$FINAL" \
   - < "$PROMPT_FILE" \

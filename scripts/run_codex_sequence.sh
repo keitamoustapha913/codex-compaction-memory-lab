@@ -28,12 +28,17 @@ RUN_ID="$(date +%Y%m%d-%H%M%S)"
 OUT_DIR=".codex-runs/$RUN_ID"
 mkdir -p "$OUT_DIR" .codex-stage
 
+CODEX_MODEL="${CODEX_MODEL:-gpt-5.4-mini}"
+CODEX_REASONING="${CODEX_REASONING:-medium}"
+
 CODEX_COMMON=(
   --cd "$ROOT"
+  --model "$CODEX_MODEL"
   --json
   --sandbox workspace-write
   -c approval_policy=never
   -c features.hooks=true
+  -c model_reasoning_effort="$CODEX_REASONING"
 )
 
 if [[ "${CODEX_BYPASS_HOOK_TRUST:-0}" == "1" ]]; then
