@@ -22,3 +22,13 @@ or
 ```text
 FINAL_STATUS: FAIL
 ```
+
+## Protected Codex runtime scratch
+
+`.codex/memory/` may be created by Codex CLI/runtime tooling. It is not the durable memory file for this experiment.
+
+Rules:
+- Do not use `.codex/memory/` as task memory.
+- Do not try to delete `.codex/memory/` from inside Codex.
+- Do not treat ignored `.codex/memory/` contents as task failure.
+- The only authoritative durable memory is `.codex-state/LIVE_MEMORY.md`.

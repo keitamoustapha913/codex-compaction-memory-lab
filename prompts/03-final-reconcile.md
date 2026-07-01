@@ -29,3 +29,9 @@ FINAL_STATUS: PASS
 FINAL_STATUS: FAIL
 
 Print FINAL_STATUS: PASS only if pytest passes, required stage artifacts exist, LIVE_MEMORY.md has all three part markers, and no unproven validation remains.
+
+Protected runtime scratch rule:
+- `.codex/memory/` may appear as Codex CLI/tooling scratch.
+- Do not read it, write it, delete it, or use it as durable memory.
+- Do not fail this stage only because ignored `.codex/memory/` exists.
+- Durable memory is `.codex-state/LIVE_MEMORY.md`.

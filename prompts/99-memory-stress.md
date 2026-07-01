@@ -20,3 +20,9 @@ FINAL_STATUS: PASS
 FINAL_STATUS: FAIL
 
 Print FINAL_STATUS: PASS only if the stress artifact exists, the memory checkpoints exist, and commands were run.
+
+Protected runtime scratch rule:
+- `.codex/memory/` may appear as Codex CLI/tooling scratch.
+- Do not read it, write it, delete it, or use it as durable memory.
+- Do not fail this stage only because ignored `.codex/memory/` exists.
+- Durable memory is `.codex-state/LIVE_MEMORY.md`.

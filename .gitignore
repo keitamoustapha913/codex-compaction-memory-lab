@@ -8,3 +8,7 @@ __pycache__/
 .codex-state/session-start-output.json
 .codex-state/transcript-snapshots/
 .codex-state/fake-transcript.jsonl
+
+# Codex CLI may create protected runtime scratch here.
+# This is not durable project memory. Durable memory is .codex-state/.
+.codex/memory/
