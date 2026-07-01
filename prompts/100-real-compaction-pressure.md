@@ -40,3 +40,8 @@ FINAL_STATUS: PASS
 FINAL_STATUS: FAIL
 
 Print FINAL_STATUS: PASS only if all required ranges were processed, LIVE_MEMORY.md contains the final markers, and the artifact exists.
+
+Compaction evidence rule:
+- Treat compaction as observed only if `.codex-state/compaction-events.jsonl` is non-empty and contains `PreCompact` or `PostCompact`.
+- An empty `.codex-state/compaction-events.jsonl` file does not prove compaction.
+- An empty `.codex-state/transcript-snapshots/` directory does not prove compaction.

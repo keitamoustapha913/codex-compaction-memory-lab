@@ -90,3 +90,68 @@ Codex may print `FINAL_STATUS: PASS` only if the active stage's required files a
 - Validation result: `git diff -- .codex-stage/100-real-compaction-pressure.md .codex-state/LIVE_MEMORY.md` shows the expected real compaction-pressure stage updates.
 - Real compaction-pressure stage reached final reconciliation pending re-read of the stage artifact, `LIVE_MEMORY.md`, and git evidence.
 - Final real compaction-pressure reconciliation re-read `.codex-stage/100-real-compaction-pressure.md`, `LIVE_MEMORY.md`, `git status --short`, and `git diff -- .codex-stage/100-real-compaction-pressure.md .codex-state/LIVE_MEMORY.md`; the processed ranges, final markers, artifact existence, and validation evidence are consistent for a PASS result.
+- Real compaction-pressure rerun started on 2026-07-01 after re-reading `AGENTS.md`, `.codex-state/LIVE_MEMORY.md`, and scanning `.codex-stage/large-context-payload.md` completely.
+- Material discovery in the rerun: `.codex-stage/large-context-payload.md` structure is `## Fact Block N` and `wc -l` remains `14998 .codex-stage/large-context-payload.md`.
+- Rerun range checkpoint: verified facts `1-250` by full-file `awk` scan with result `1-250 250 1 250`. `RANGE_1_250_COMPLETE`
+- Rerun range checkpoint: verified facts `251-500` by full-file `awk` scan with result `251-500 250 251 500`. `RANGE_251_500_COMPLETE`
+- Rerun range checkpoint: verified facts `501-750` by full-file `awk` scan with result `501-750 250 501 750`. `RANGE_501_750_COMPLETE`
+- Rerun range checkpoint: verified facts `751-1000` by full-file `awk` scan with result `751-1000 250 751 1000`. `RANGE_751_1000_COMPLETE`
+- Rerun range checkpoint: verified facts `1001-1250` by full-file `awk` scan with result `1001-1250 250 1001 1250`. `RANGE_1001_1250_COMPLETE`
+- Rerun range checkpoint: verified facts `1251-1500` by full-file `awk` scan with result `1251-1500 250 1251 1500`. `RANGE_1251_1500_COMPLETE`
+- Rerun range checkpoint: verified facts `1501-1750` by full-file `awk` scan with result `1501-1750 250 1501 1750`. `RANGE_1501_1750_COMPLETE`
+- Rerun range checkpoint: verified facts `1751-2000` by full-file `awk` scan with result `1751-2000 250 1751 2000`. `RANGE_1751_2000_COMPLETE`
+- Rerun range checkpoint: verified facts `2001-2250` by full-file `awk` scan with result `2001-2250 250 2001 2250`. `RANGE_2001_2250_COMPLETE`
+- Rerun range checkpoint: verified facts `2251-2500` by full-file `awk` scan with result `2251-2500 250 2251 2500`. `RANGE_2251_2500_COMPLETE`
+- Material discovery in the rerun: `.codex-state/compaction-events.jsonl` is missing and `.codex-state/transcript-snapshots` exists.
+- Validation result in the rerun: `test -f .codex-stage/100-real-compaction-pressure.md` returned exit code `0`.
+- Validation result in the rerun: `grep -q 'RANGE_2001_2250_COMPLETE' .codex-state/LIVE_MEMORY.md` returned exit code `0`.
+- Validation result in the rerun: `grep -q 'RANGE_2251_2500_COMPLETE' .codex-state/LIVE_MEMORY.md` returned exit code `0`.
+- Validation result in the rerun: `git status --short` returned clean output.
+- Validation result in the rerun: `git diff -- .codex-stage/100-real-compaction-pressure.md .codex-state/LIVE_MEMORY.md` returned no diff before the rerun artifact refresh.
+- Real compaction-pressure rerun reached artifact-refresh phase; next step is updating `.codex-stage/100-real-compaction-pressure.md` with this run's evidence.
+- Final rerun reconciliation re-read `.codex-stage/100-real-compaction-pressure.md` and the tail of `LIVE_MEMORY.md`, then re-ran the required validations.
+- Final rerun validation result: `test -f .codex-stage/100-real-compaction-pressure.md` returned exit code `0`.
+- Final rerun validation result: `grep -q 'RANGE_2001_2250_COMPLETE' .codex-state/LIVE_MEMORY.md` returned exit code `0`.
+- Final rerun validation result: `grep -q 'RANGE_2251_2500_COMPLETE' .codex-state/LIVE_MEMORY.md` returned exit code `0`.
+- Final rerun validation result: `git status --short` showed only `M .codex-state/LIVE_MEMORY.md`.
+- Final rerun validation result: `git diff -- .codex-stage/100-real-compaction-pressure.md .codex-state/LIVE_MEMORY.md` shows only the appended rerun entries in `LIVE_MEMORY.md`; the stage artifact contents are already reconciled.
+- Final real compaction-pressure rerun reconciliation confirms that all 10 ranges were processed, both final range markers are present in `LIVE_MEMORY.md`, and `.codex-stage/100-real-compaction-pressure.md` exists; PASS is proven for this prompt.
+- Real compaction-pressure current run started on 2026-07-01 after re-reading `AGENTS.md`, `.codex-state/LIVE_MEMORY.md`, and `.codex-stage/large-context-payload.md` completely.
+- Material discovery in the current run: `.codex-stage/large-context-payload.md` was fully re-scanned across lines `1-14998`; payload structure remains repeated `## Fact Block N` sections with `UNIQUE_FACT`, `EXPECTED_CHECKPOINT`, and `TRACE` lines through fact `2500`.
+- Current-run range checkpoint: verified facts `1-250` with full-file `awk` result `1-250 250 1 250`. `RANGE_1_250_COMPLETE`
+- Current-run range checkpoint: verified facts `251-500` with full-file `awk` result `251-500 250 251 500`. `RANGE_251_500_COMPLETE`
+- Current-run range checkpoint: verified facts `501-750` with full-file `awk` result `501-750 250 501 750`. `RANGE_501_750_COMPLETE`
+- Current-run range checkpoint: verified facts `751-1000` with full-file `awk` result `751-1000 250 751 1000`. `RANGE_751_1000_COMPLETE`
+- Current-run range checkpoint: verified facts `1001-1250` with full-file `awk` result `1001-1250 250 1001 1250`. `RANGE_1001_1250_COMPLETE`
+- Current-run range checkpoint: verified facts `1251-1500` with full-file `awk` result `1251-1500 250 1251 1500`. `RANGE_1251_1500_COMPLETE`
+- Current-run range checkpoint: verified facts `1501-1750` with full-file `awk` result `1501-1750 250 1501 1750`. `RANGE_1501_1750_COMPLETE`
+- Current-run range checkpoint: verified facts `1751-2000` with full-file `awk` result `1751-2000 250 1751 2000`. `RANGE_1751_2000_COMPLETE`
+- Current-run range checkpoint: verified facts `2001-2250` with full-file `awk` result `2001-2250 250 2001 2250`. `RANGE_2001_2250_COMPLETE`
+- Current-run range checkpoint: verified facts `2251-2500` with full-file `awk` result `2251-2500 250 2251 2500`. `RANGE_2251_2500_COMPLETE`
+- Material discovery in the current run: `.codex-state/compaction-events.jsonl` exists as an empty file and `.codex-state/transcript-snapshots` exists as a directory; this corrects the stale missing-file note from earlier runs.
+- Validation result in the current run: `test -f .codex-stage/100-real-compaction-pressure.md` returned exit code `0`.
+- Validation result in the current run: `grep -q 'RANGE_2001_2250_COMPLETE' .codex-state/LIVE_MEMORY.md` returned exit code `0`.
+- Validation result in the current run: `grep -q 'RANGE_2251_2500_COMPLETE' .codex-state/LIVE_MEMORY.md` returned exit code `0`.
+- Validation result in the current run: `git status --short` showed `M .codex-state/LIVE_MEMORY.md` plus unrelated untracked `scripts/run_codex_watch.sh` and `scripts/watch_codex_jsonl.py`.
+- Validation result in the current run: `git diff -- .codex-stage/100-real-compaction-pressure.md .codex-state/LIVE_MEMORY.md` shows the appended current-run durable-memory entries and the stage-artifact refresh.
+- Final current-run reconciliation re-read `.codex-stage/100-real-compaction-pressure.md`, the tail of `LIVE_MEMORY.md`, `git status --short`, and the diff for `.codex-stage/100-real-compaction-pressure.md` plus `.codex-state/LIVE_MEMORY.md`; all 10 ranges, both final markers, artifact existence, and current hook-status evidence are consistent for a PASS result.
+- Real compaction-pressure verification rerun started on 2026-07-01 after re-reading `AGENTS.md`, `.codex-state/LIVE_MEMORY.md`, and `.codex-stage/large-context-payload.md` completely.
+- Material discovery in the verification rerun: `.codex-stage/large-context-payload.md` remains `14998` lines long and the required 10 ranges are being re-validated against `## Fact Block N` markers.
+- Verification-rerun range checkpoint: verified facts `1-250` with full-file `awk` result `1-250 250 1 250`. `RANGE_1_250_COMPLETE`
+- Verification-rerun range checkpoint: verified facts `251-500` with full-file `awk` result `251-500 250 251 500`. `RANGE_251_500_COMPLETE`
+- Verification-rerun range checkpoint: verified facts `501-750` with full-file `awk` result `501-750 250 501 750`. `RANGE_501_750_COMPLETE`
+- Verification-rerun range checkpoint: verified facts `751-1000` with full-file `awk` result `751-1000 250 751 1000`. `RANGE_751_1000_COMPLETE`
+- Verification-rerun range checkpoint: verified facts `1001-1250` with full-file `awk` result `1001-1250 250 1001 1250`. `RANGE_1001_1250_COMPLETE`
+- Verification-rerun range checkpoint: verified facts `1251-1500` with full-file `awk` result `1251-1500 250 1251 1500`. `RANGE_1251_1500_COMPLETE`
+- Verification-rerun range checkpoint: verified facts `1501-1750` with full-file `awk` result `1501-1750 250 1501 1750`. `RANGE_1501_1750_COMPLETE`
+- Verification-rerun range checkpoint: verified facts `1751-2000` with full-file `awk` result `1751-2000 250 1751 2000`. `RANGE_1751_2000_COMPLETE`
+- Verification-rerun range checkpoint: verified facts `2001-2250` with full-file `awk` result `2001-2250 250 2001 2250`. `RANGE_2001_2250_COMPLETE`
+- Verification-rerun range checkpoint: verified facts `2251-2500` with full-file `awk` result `2251-2500 250 2251 2500`. `RANGE_2251_2500_COMPLETE`
+- Material discovery in the verification rerun: `.codex-state/compaction-events.jsonl` is currently missing, so compaction is not observed; `.codex-state/transcript-snapshots` exists as an empty directory and does not prove compaction.
+- Validation result in the verification rerun: `test -f .codex-stage/100-real-compaction-pressure.md` returned exit code `0`.
+- Validation result in the verification rerun: `grep -q 'RANGE_2001_2250_COMPLETE' .codex-state/LIVE_MEMORY.md` returned exit code `0`.
+- Validation result in the verification rerun: `grep -q 'RANGE_2251_2500_COMPLETE' .codex-state/LIVE_MEMORY.md` returned exit code `0`.
+- Validation result in the verification rerun: `git status --short` showed `M .codex-state/LIVE_MEMORY.md`, `M prompts/100-real-compaction-pressure.md`, and unrelated untracked `scripts/run_codex_watch.sh`, `scripts/watch_codex_jsonl.py`, `scripts/watch_compaction.sh`.
+- Validation result in the verification rerun: `git diff -- .codex-stage/100-real-compaction-pressure.md .codex-state/LIVE_MEMORY.md` showed the appended verification-rerun entries in `LIVE_MEMORY.md` and the stage-artifact refresh.
+- Verification rerun reached final reconciliation pending re-read of `.codex-stage/100-real-compaction-pressure.md`, `LIVE_MEMORY.md`, and current git evidence.
+- Final verification-rerun reconciliation re-read `.codex-stage/100-real-compaction-pressure.md`, the tail of `LIVE_MEMORY.md`, `git status --short`, and `git diff -- .codex-stage/100-real-compaction-pressure.md .codex-state/LIVE_MEMORY.md`; all 10 ranges were processed, both final markers are present, the stage artifact exists, and current hook evidence correctly records that compaction is not observed.

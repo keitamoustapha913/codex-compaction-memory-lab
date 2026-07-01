@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+PROMPT_FILE="${1:?usage: scripts/run_codex_watch.sh prompts/file.md}"
+ROOT="${2:-$(pwd)}"
+ROOT="$(cd "$ROOT" && pwd)"
+cd "$ROOT"
+
+mkdir -p .codex-runs .codex-state
+RUN_ID="$(date +%Y%m%d-%H%M%S)"
+EVENTS=".codex-runs/$RUN_ID-events.jsonl"
+STDERR_LOG=".codex-runs/$RUN_ID-stderr.log"
+FINAL=".codex-runs/$RUN_ID-final.md"
+
+echo "RUN_ID=$RUN_ID"
+echo "EVENTS=$EVENTS"
+echo "STDERR=$STDERR_LOG"
+echo "FINAL=$FINAL"
+echo
+
+codex exec \
+  --cd "$ROOT" \
+  --json \
+  --sandbox workspace-write \
+  -c approval_policy=never \
+  -c features.hooks=true \
+  --dangerously-bypass-hook-trust \
+  --output-last-message "$FINAL" \
+  - < "$PROMPT_FILE" \
+  2> >(tee "$STDERR_LOG" >&2) \
+  | tee "$EVENTS" \
+  | scripts/watch_codex_jsonl.py
+
+echo
+echo "=== FINAL MESSAGE ==="
+cat "$FINAL"
+
+echo
+echo "=== COMPACTION EVENTS ==="
+if [[ -s .codex-state/compaction-events.jsonl ]]; then
+  cat .codex-state/compaction-events.jsonl
+else
+  echo "<none: PreCompact/PostCompact did not fire>"
+fi
+
+echo
+echo "=== SNAPSHOTS ==="
+if [[ -d .codex-state/transcript-snapshots ]] && find .codex-state/transcript-snapshots -type f | grep -q .; then
+  find .codex-state/transcript-snapshots -type f -print | sort
+else
+  echo "<none>"
+fi
