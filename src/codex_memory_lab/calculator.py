@@ -7,6 +7,4 @@ def safe_divide(numerator: float, denominator: float) -> float:
 
     This file intentionally starts with a bug so Codex has something concrete to fix.
     """
-    if denominator == 0:
-        return 0.0  # BUG: should raise ZeroDivisionError naturally or explicitly.
     return numerator / denominator

@@ -33,6 +33,7 @@ CODEX_COMMON=(
   --json
   --sandbox workspace-write
   -c approval_policy=never
+  -c features.hooks=true
 )
 
 if [[ "${CODEX_BYPASS_HOOK_TRUST:-0}" == "1" ]]; then
