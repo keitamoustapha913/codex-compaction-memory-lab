@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+*.egg-info/
+.codex-runs/
+.codex-stage/
+.codex/memory/compaction-events.jsonl
+.codex/memory/prompt-events.jsonl
+.codex/memory/session-start-output.json
+.codex/memory/transcript-snapshots/
+.codex/memory/fake-transcript.jsonl

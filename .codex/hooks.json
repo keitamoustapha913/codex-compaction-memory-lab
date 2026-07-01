@@ -1,0 +1,55 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/session_start_memory_loader.py\"",
+            "timeout": 30,
+            "statusMessage": "Loading durable Codex memory"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/user_prompt_submit_memory_reminder.py\"",
+            "timeout": 30,
+            "statusMessage": "Recording prompt and reminding Codex to update memory"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "manual|auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/pre_compact_memory_snapshot.py\"",
+            "timeout": 30,
+            "statusMessage": "Saving memory snapshot before compaction"
+          }
+        ]
+      }
+    ],
+    "PostCompact": [
+      {
+        "matcher": "manual|auto",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 \"$(git rev-parse --show-toplevel)/.codex/hooks/post_compact_marker.py\"",
+            "timeout": 30,
+            "statusMessage": "Recording compaction completion"
+          }
+        ]
+      }
+    ]
+  }
+}
