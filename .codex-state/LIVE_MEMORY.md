@@ -50,3 +50,43 @@ Codex may print `FINAL_STATUS: PASS` only if the active stage's required files a
 - Created `.codex-stage/03-final-reconcile.md` with final validation results, hook-log status, changed-file list, and proof assessment.
 - PART_03_FINAL_RECONCILED
 - Final Part 03 reconciliation re-read all stage artifacts, `git status --short`, `git diff -- src tests .codex-stage .codex-state/LIVE_MEMORY.md`, and `LIVE_MEMORY.md`; required evidence is consistent for a PASS result.
+- Memory-stress stage started after re-reading `AGENTS.md` and `.codex-state/LIVE_MEMORY.md`.
+- Material discovery: `.codex-stage/99-memory-stress.md` did not exist at stage start.
+- Validation result: baseline `git status --short` was clean at memory-stress stage start.
+- Created `.codex-stage/99-memory-stress.md` and populated facts 1-20 for the durable-memory stress task.
+- Memory-stress checkpoint: completed facts 1-20 in `.codex-stage/99-memory-stress.md`.
+- Expanded `.codex-stage/99-memory-stress.md` with facts 21-40.
+- Memory-stress checkpoint: completed facts 21-40 in `.codex-stage/99-memory-stress.md`.
+- Expanded `.codex-stage/99-memory-stress.md` with facts 41-60.
+- Memory-stress checkpoint: completed facts 41-60 in `.codex-stage/99-memory-stress.md`.
+- Expanded `.codex-stage/99-memory-stress.md` with facts 61-80.
+- Memory-stress checkpoint: completed facts 61-80 in `.codex-stage/99-memory-stress.md`.
+- Expanded `.codex-stage/99-memory-stress.md` with facts 81-100.
+- Memory-stress checkpoint: completed facts 81-100 in `.codex-stage/99-memory-stress.md`.
+- Memory-stress content generation completed; next step is final re-read and command validation.
+- Final memory-stress reconciliation re-read `.codex-state/LIVE_MEMORY.md` and `.codex-stage/99-memory-stress.md`.
+- Validation result: `wc -l .codex-stage/99-memory-stress.md` returned `102 .codex-stage/99-memory-stress.md`.
+- Validation result: final `git status --short` returned ` M .codex-state/LIVE_MEMORY.md`.
+- Validation result: `git diff -- .codex-stage/99-memory-stress.md .codex-state/LIVE_MEMORY.md` shows the new durable-memory checkpoint entries; the stage artifact itself does not appear in that diff output.
+- Memory-stress stage evidence is sufficient for a PASS result: artifact exists, all five checkpoints exist, required commands were run.
+- Real compaction-pressure stage started after re-reading `AGENTS.md` and `.codex-state/LIVE_MEMORY.md`.
+- Material discovery: `.codex-stage/large-context-payload.md` exists and `wc -l` reported `14998 .codex-stage/large-context-payload.md`.
+- Range checkpoint: verified facts `1-250` in `.codex-stage/large-context-payload.md`; `awk` reported `1-250 250 1 250`. `RANGE_1_250_COMPLETE`
+- Range checkpoint: verified facts `251-500` in `.codex-stage/large-context-payload.md`; `awk` reported `251-500 250 251 500`. `RANGE_251_500_COMPLETE`
+- Range checkpoint: verified facts `501-750` in `.codex-stage/large-context-payload.md`; `awk` reported `501-750 250 501 750`. `RANGE_501_750_COMPLETE`
+- Range checkpoint: verified facts `751-1000` in `.codex-stage/large-context-payload.md`; `awk` reported `751-1000 250 751 1000`. `RANGE_751_1000_COMPLETE`
+- Range checkpoint: verified facts `1001-1250` in `.codex-stage/large-context-payload.md`; `awk` reported `1001-1250 250 1001 1250`. `RANGE_1001_1250_COMPLETE`
+- Range checkpoint: verified facts `1251-1500` in `.codex-stage/large-context-payload.md`; `awk` reported `1251-1500 250 1251 1500`. `RANGE_1251_1500_COMPLETE`
+- Range checkpoint: verified facts `1501-1750` in `.codex-stage/large-context-payload.md`; `awk` reported `1501-1750 250 1501 1750`. `RANGE_1501_1750_COMPLETE`
+- Range checkpoint: verified facts `1751-2000` in `.codex-stage/large-context-payload.md`; `awk` reported `1751-2000 250 1751 2000`. `RANGE_1751_2000_COMPLETE`
+- Range checkpoint: verified facts `2001-2250` in `.codex-stage/large-context-payload.md`; `awk` reported `2001-2250 250 2001 2250`. `RANGE_2001_2250_COMPLETE`
+- Range checkpoint: verified facts `2251-2500` in `.codex-stage/large-context-payload.md`; `awk` reported `2251-2500 250 2251 2500`. `RANGE_2251_2500_COMPLETE`
+- Material discovery: `.codex-state/compaction-events.jsonl` is missing and `.codex-state/transcript-snapshots` exists during the real compaction-pressure stage.
+- Created `.codex-stage/100-real-compaction-pressure.md` with processed ranges, hook artifact status, and validation evidence placeholders.
+- Validation result: `test -f .codex-stage/100-real-compaction-pressure.md` returned exit code `0`.
+- Validation result: `grep -q 'RANGE_2001_2250_COMPLETE' .codex-state/LIVE_MEMORY.md` returned exit code `0`.
+- Validation result: `grep -q 'RANGE_2251_2500_COMPLETE' .codex-state/LIVE_MEMORY.md` returned exit code `0`.
+- Validation result: `git status --short` showed modified `.codex-state/LIVE_MEMORY.md` and unrelated untracked `prompts/100-real-compaction-pressure.md`.
+- Validation result: `git diff -- .codex-stage/100-real-compaction-pressure.md .codex-state/LIVE_MEMORY.md` shows the expected real compaction-pressure stage updates.
+- Real compaction-pressure stage reached final reconciliation pending re-read of the stage artifact, `LIVE_MEMORY.md`, and git evidence.
+- Final real compaction-pressure reconciliation re-read `.codex-stage/100-real-compaction-pressure.md`, `LIVE_MEMORY.md`, `git status --short`, and `git diff -- .codex-stage/100-real-compaction-pressure.md .codex-state/LIVE_MEMORY.md`; the processed ranges, final markers, artifact existence, and validation evidence are consistent for a PASS result.
