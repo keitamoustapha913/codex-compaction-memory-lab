@@ -32,3 +32,19 @@ Rules:
 - Do not try to delete `.codex/memory/` from inside Codex.
 - Do not treat ignored `.codex/memory/` contents as task failure.
 - The only authoritative durable memory is `.codex-state/LIVE_MEMORY.md`.
+
+<!-- CURRENT_LAB_RULES_START -->
+## Current Lab Rules
+
+- Use `.codex-state/LIVE_MEMORY.md` as the authoritative durable memory file.
+- Do not use `.codex/memory/` as project memory.
+- Do not fail a task merely because ignored `.codex/memory/` scratch exists.
+- Use `uv run --python 3.10 pytest` for validation.
+- Default non-interactive model is `gpt-5.4-mini`.
+- Default reasoning effort is `medium`.
+- Use `scripts/run_codex_sequence.sh` for gated multi-part execution.
+- Use `scripts/run_codex_watch.sh` for TUI-like non-interactive progress.
+- Use `scripts/watch_compaction.sh` to watch for real PreCompact/PostCompact events.
+- Treat compaction as observed only when `.codex-state/compaction-events.jsonl` is non-empty and contains `PreCompact` or `PostCompact`.
+- End every Codex task with exactly one final status line: `FINAL_STATUS: PASS` or `FINAL_STATUS: FAIL`.
+<!-- CURRENT_LAB_RULES_END -->

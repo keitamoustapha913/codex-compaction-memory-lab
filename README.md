@@ -2,6 +2,38 @@
 
 A small Git repository for testing Codex CLI non-interactive sequencing, compaction hooks, and durable memory handoff.
 
+<!-- DOCS_INDEX_START -->
+## Documentation
+
+Current implementation docs:
+
+- [`docs/IMPLEMENTATION_STATUS.md`](docs/IMPLEMENTATION_STATUS.md) — accepted features, pending items, and current classification
+- [`docs/FEATURES.md`](docs/FEATURES.md) — implemented components and responsibilities
+- [`docs/RUNBOOK.md`](docs/RUNBOOK.md) — commands for running, watching, validating, and resetting the lab
+- [`docs/COMPACTION_EVIDENCE.md`](docs/COMPACTION_EVIDENCE.md) — evidence policy for proving real compaction
+
+Current defaults:
+
+```text
+model: gpt-5.4-mini
+reasoning effort: medium
+reasoning summary: auto
+verbosity: medium
+python: uv Python 3.10
+```
+
+Current classification:
+
+```text
+CODEX_DURABLE_MEMORY_LAB_ACCEPTED
+REAL_HOOKS_SESSIONSTART_USERPROMPT_ACCEPTED
+NON_INTERACTIVE_PROGRESS_WATCH_ACCEPTED
+REAL_COMPACTION_TRIGGER_NOT_REACHED
+PRECOMPACT_POSTCOMPACT_REAL_TRIGGER_PENDING
+```
+
+<!-- DOCS_INDEX_END -->
+
 The repo demonstrates this pattern:
 
 ```text
